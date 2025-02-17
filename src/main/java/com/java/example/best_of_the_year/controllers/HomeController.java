@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.java.example.best_of_the_year.models.Movie;
@@ -34,6 +35,20 @@ public class HomeController {
         List<String> songsTitles = getBestSongs().stream().map(Song::getTitle).collect(Collectors.toList());
         model.addAttribute("songs", String.join(", ", songsTitles));
         return "songs";
+    }
+
+    @GetMapping("/movies/{id}")
+    public String movieDetail(@PathVariable int id, Model model) {
+        Movie movie = getBestMovies().stream().filter(m -> m.getId() == id).findFirst().orElse(null);
+        model.addAttribute("movie", movie);
+        return "movie-detail";
+    }
+
+    @GetMapping("/songs/{id}")
+    public String songDetail(@PathVariable int id, Model model) {
+        Song song = getBestSongs().stream().filter(m -> m.getId() == id).findFirst().orElse(null);
+        model.addAttribute("song", song);
+        return "song-detail";
     }
 
     private List<Movie> getBestMovies() {
