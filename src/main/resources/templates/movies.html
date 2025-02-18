@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies</title>
-</head>
+<head th:replace="~{fragments/fragments :: page-head('Movies')}"></head>
+
 
 <body>
-    <h1>Best Movies</h1>
-    <p th:text="${movies}"></p>
+    <th:block th:replace="~{fragments/fragments :: navbar(Lucrezia)}"></th:block>
+
+    <th:block th:replace="~{fragments/fragments :: hero(
+        'Welcome to best Movies of the Year',
+        'Discover the best movies of the year, handpicked for you!'
+    )}"></th:block>
+
+    <th:block th:replace="~{fragments/fragments :: list(
+        'Top Movies',
+        ${movies},
+        '/movies'
+    )}"></th:block>
+
+    <div th:replace="~{fragments/fragments :: scripts}"></div>
+
 </body>
 
 </html>

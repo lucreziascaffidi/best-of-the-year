@@ -1,6 +1,5 @@
 package com.java.example.best_of_the_year.controllers;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,15 +24,15 @@ public class HomeController {
 
     @GetMapping("/movies")
     public String movies(Model model) {
-        List<String> movieTitles = getBestMovies().stream().map(Movie::getTitle).collect(Collectors.toList());
-        model.addAttribute("movies", String.join(", ", movieTitles));
+        List<Movie> movieList = getBestMovies();
+        model.addAttribute("movies", movieList);
         return "movies";
     }
 
     @GetMapping("/songs")
     public String songs(Model model) {
-        List<String> songsTitles = getBestSongs().stream().map(Song::getTitle).collect(Collectors.toList());
-        model.addAttribute("songs", String.join(", ", songsTitles));
+        List<Song> songsList = getBestSongs();
+        model.addAttribute("songs", songsList);
         return "songs";
     }
 
@@ -52,17 +51,19 @@ public class HomeController {
     }
 
     private List<Movie> getBestMovies() {
-        return Arrays.asList(
+        return List.of(
                 new Movie(1, "Jurassic Park"),
                 new Movie(2, "Spider Man"),
-                new Movie(3, "The Dark Knight"));
+                new Movie(3, "The Dark Knight"),
+                new Movie(4, "Pulp Fiction"));
     }
 
     private List<Song> getBestSongs() {
-        return Arrays.asList(
+        return List.of(
                 new Song(1, "Skyfall"),
                 new Song(2, "I Wanna Be Yours"),
-                new Song(3, "Just Breathe"));
+                new Song(3, "Just Breathe"),
+                new Song(4, "Back to Black"));
     }
 
 }
