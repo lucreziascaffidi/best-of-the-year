@@ -3,10 +3,12 @@ package com.java.example.best_of_the_year.models;
 public class Movie {
     private int id;
     private String title;
+    private String description;
 
-    public Movie(int id, String title) {
+    public Movie(int id, String title, String description) {
         this.id = id;
         this.title = title;
+        this.description = description;
     }
 
     public int getId() {
@@ -17,12 +19,20 @@ public class Movie {
         return this.title;
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

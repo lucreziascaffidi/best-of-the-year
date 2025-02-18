@@ -1,7 +1,6 @@
 package com.java.example.best_of_the_year.controllers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,18 +51,18 @@ public class HomeController {
 
     private List<Movie> getBestMovies() {
         return List.of(
-                new Movie(1, "Jurassic Park"),
-                new Movie(2, "Spider Man"),
-                new Movie(3, "The Dark Knight"),
-                new Movie(4, "Pulp Fiction"));
+                new Movie(1, "Jurassic Park", "A thrilling adventure of dinosaurs brought to life."),
+                new Movie(2, "Spider Man", "The origin story of Peter Parker as Spider-Man."),
+                new Movie(3, "The Dark Knight", "Batman faces the Joker in a battle for Gotham."),
+                new Movie(4, "Pulp Fiction", "A mix of crime stories with a unique narrative."));
     }
 
     private List<Song> getBestSongs() {
         return List.of(
-                new Song(1, "Skyfall"),
-                new Song(2, "I Wanna Be Yours"),
-                new Song(3, "Just Breathe"),
-                new Song(4, "Back to Black"));
+                new Song(1, "Skyfall", "Author: Adele"),
+                new Song(2, "I Wanna Be Yours", "Author: Arctic Monkeys"),
+                new Song(3, "Just Breathe", "Author: Pearl Jam"),
+                new Song(4, "Back to Black", "Author: Amy Winehouse"));
     }
 
 }
